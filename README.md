@@ -11,7 +11,7 @@ To run this microservice, follow these steps:
 2. Set up the required configurations and secrets:
 
    - todos-configMap.yaml: Provides configuration data for the microservice and MySQL, including the host, database, and username values.
-   - todos-secret.yaml: <span style="color:red;">Contains sensitive data</span>, such as the root password and password, which are base64-encoded.
+   - todos-secret.yaml: Contains sensitive data, such as the root password and password, which are base64-encoded.
 
 3. Deploy the microservice and MySQL database:
 
