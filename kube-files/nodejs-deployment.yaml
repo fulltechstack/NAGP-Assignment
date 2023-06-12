@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-deployment     # Name of the deployment
+spec:
+  replicas: 4                # Number of replicas
+  selector:
+    matchLabels:
+      app: nodejs             
+  template:
+    metadata:
+      labels:
+        app: nodejs           
+    spec:
+      containers:
+        - name: nodejs        # Name of the container
+          image: lawnsky/nagp-node:v1   # Image used for the container
+          ports:
+            - containerPort: 3000       # Port exposed by the container
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: todos-configmap   # Name of the ConfigMap containing DB_HOST
+                  key: host                # Key within the ConfigMap for DB_HOST
+            - name: DB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: todos-configmap   # Name of the ConfigMap containing DB_USERNAME
+                  key: username           # Key within the ConfigMap for DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: todos-secret      # Name of the Secret containing DB_PASSWORD
+                  key: password           # Key within the Secret for DB_PASSWORD
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: todos-configmap   # Name of the ConfigMap containing DB_NAME
+                  key: database           # Key within the ConfigMap for DB_NAME
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-service         # Name of the service
+spec:
+  selector:
+    app: nodejs                # Selector for matching labels
+  ports:
+    - protocol: TCP
+      port: 3000                # Port exposed by the service
+      targetPort: 3000          # Port on the pods to forward traffic to
