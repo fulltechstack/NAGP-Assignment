@@ -6,7 +6,9 @@ spec:
   replicas: 4                # Number of replicas
   selector:
     matchLabels:
-      app: nodejs             
+      app: nodejs  
+  strategy:
+    type: RollingUpdate             
   template:
     metadata:
       labels:

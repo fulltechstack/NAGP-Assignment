@@ -28,7 +28,7 @@ To run this microservice, follow these steps:
      - GET /todos: Fetches the list of todos from the database.
      - POST /todos: Inserts dummy data into the database.
 
-   - External IP for accessing the service: [http://35.232.66.143:3000/todos](http://35.232.66.143:3000/todos)
+   - External IP for accessing the service: [http://104.197.218.119:3000/todos](http://104.197.218.119:3000/todos)
 
 ## Repository
 
