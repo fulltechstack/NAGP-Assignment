@@ -33,3 +33,5 @@ To run this microservice, follow these steps:
 ## Repository
 
 Find the complete code and configurations in the [GitHub repository](https://github.com/fulltechstack/NAGP-Assignment).
+
+Docker hub URL for iamge [Docker image](https://hub.docker.com/r/lawnsky/nagp-node)
